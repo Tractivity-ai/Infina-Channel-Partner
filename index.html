@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infina - Become a Channel Partner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #003368;
+    --navy-deep: #001B3A;
+    --hero-1: #052657;
+    --hero-2: #052A5E;
+    --hero-3: #012F62;
+    --coral: #EE1B24;
+    --coral-hover: #C8121A;
+    --coral-soft: #FF6B66;
+    --paper: #F7F9FC;
+    --paper-card: #FFFFFF;
+    --line: #E4E9F1;
+    --ink: #14213D;
+    --ink-soft: #6E7191;
+    --error: #EE1B24;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    font-family: 'DM Sans', 'Open Sans', sans-serif;
+    color: var(--ink);
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ============ TOP NAV ============ */
+  .topnav {
+    padding: 18px 20px 0;
+  }
+
+  .topnav-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    background: #EAF1FB;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    padding: 0 12px 0 22px;
+  }
+
+  .wordmark {
+    display: inline-flex;
+    text-decoration: none;
+  }
+
+  .logo-real {
+    height: 26px;
+    width: auto;
+    display: block;
+  }
+
+  .logo-real-dark {
+    filter: brightness(0) invert(1);
+    opacity: 0.97;
+  }
+
+  .topnav-right {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .topnav-links {
+    display: flex;
+    gap: 26px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--navy);
+  }
+
+  .topnav-links a { text-decoration: none; }
+  .topnav-links a:hover { color: var(--coral); }
+
+  .topnav-cta {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background: var(--navy);
+    padding: 12px 22px;
+    border-radius: 100px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 780px) {
+    .topnav-links { display: none; }
+  }
+
+  /* ============ HERO / CARD ============ */
+  .hero-outer {
+    padding: 40px 20px 0;
+  }
+
+  .card {
+    max-width: 1120px;
+    width: 100%;
+    margin: 0 auto;
+    background: linear-gradient(102deg, var(--hero-1) 0%, var(--hero-2) 36%, var(--hero-3) 70%, var(--navy) 100%);
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+
+  /* LEFT PANEL */
+  .info-panel {
+    color: #F4F7FB;
+    padding: 44px 40px 40px 44px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  .info-panel::before {
+    content: "";
+    position: absolute;
+    top: -90px;
+    right: -90px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(238,27,36,0.28) 0%, rgba(238,27,36,0) 70%);
+  }
+
+  .logo-mark {
+    margin-bottom: 34px;
+    display: inline-flex;
+  }
+
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--coral);
+    margin-bottom: 18px;
+  }
+
+  .info-panel h1 {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 2.6vw, 36px);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin: 0 0 16px 0;
+  }
+
+  .info-panel h1 span {
+    color: var(--coral);
+  }
+
+  .info-panel p.lede {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(202,222,247,0.76);
+    margin: 0 0 30px 0;
+    max-width: 34ch;
+  }
+
+  .eligibility {
+    border-top: 1px solid rgba(244,247,251,0.15);
+    padding-top: 22px;
+  }
+
+  .eligibility h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--coral);
+    margin: 0 0 14px 0;
+  }
+
+  .eligibility ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .eligibility li {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(244,247,251,0.88);
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .eligibility li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 6px;
+    height: 6px;
+    background: var(--coral);
+    border-radius: 50%;
+  }
+
+  .voucher-tag {
+    margin-top: 32px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(244,247,251,0.4);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .voucher-tag::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: rgba(244,247,251,0.3);
+  }
+
+  /* FORM PANEL */
+  .form-panel {
+    background: var(--paper-card);
+    margin: 10px;
+    border-radius: 14px;
+    padding: 40px 44px 36px 44px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .form-header {
+    margin-bottom: 26px;
+  }
+
+  .form-header .step-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--coral);
+    margin-bottom: 6px;
+  }
+
+  .form-header h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    margin: 0;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 28px;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .field.full { grid-column: 1 / -1; }
+
+  .field label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+    letter-spacing: 0.01em;
+  }
+
+  .field .req { color: var(--coral); margin-left: 2px; }
+
+  .field input,
+  .field select {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    padding: 11px 12px;
+    outline: none;
+    transition: border-color 0.15s ease;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .field select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='%23003368' d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 18px;
+    cursor: pointer;
+    padding-right: 34px;
+  }
+
+  .field select:invalid { color: #9CA3AF; }
+
+  .field input:focus,
+  .field select:focus {
+    border-color: var(--coral);
+  }
+
+  .field input::placeholder { color: #A9ACB4; }
+
+  .field .hint {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+
+  .field .error-msg {
+    font-size: 11.5px;
+    color: var(--error);
+    margin-top: 6px;
+    display: none;
+  }
+
+  .field.has-error input,
+  .field.has-error select { border-color: var(--error); }
+  .field.has-error .error-msg { display: block; }
+
+  .submit-row {
+    grid-column: 1 / -1;
+    margin-top: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  button.submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #FFFFFF;
+    background: var(--coral);
+    border: none;
+    padding: 14px 18px 14px 30px;
+    border-radius: 100px;
+    cursor: pointer;
+    box-shadow: 0 14px 34px -14px rgba(238,27,36,0.85);
+    transition: background 0.18s ease, transform 0.18s ease;
+  }
+
+  button.submit:hover { background: var(--coral-hover); transform: translateY(-2px); }
+
+  .btn-arrow-circle {
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--coral);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .reassurance {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 46ch;
+  }
+
+  .reassurance strong { color: var(--ink); font-weight: 600; }
+
+  .consent {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    line-height: 1.5;
+    color: #9CA3AF;
+    grid-column: 1 / -1;
+  }
+
+  @media (max-width: 780px) {
+    .card { grid-template-columns: 1fr; border-radius: 16px; }
+    .info-panel { padding: 32px 26px 28px; }
+    .form-panel { padding: 30px 22px 26px; margin: 8px; }
+    form { grid-template-columns: 1fr; }
+    .field.full { grid-column: 1; }
+  }
+
+  /* ============ TRUST STRIP ============ */
+  .trust-strip {
+    background: var(--paper-card);
+    padding: 26px 0 0;
+  }
+
+  .trust-strip .wrap {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-bottom: 26px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .trust-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  .trust-logos {
+    display: flex;
+    gap: 34px;
+    flex-wrap: wrap;
+    align-items: center;
+    opacity: 0.55;
+  }
+
+  .trust-logos span {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--navy);
+  }
+
+  /* ============ SECTION SHARED ============ */
+  section.block {
+    padding: 84px 0;
+  }
+
+  .section-head {
+    max-width: 620px;
+    margin: 0 0 48px 0;
+    text-align: center;
+  }
+
+  .section-head.left { text-align: left; margin-left: 0; }
+
+  .section-head.center { margin-left: auto; margin-right: auto; }
+
+  .section-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--coral);
+    margin-bottom: 14px;
+  }
+
+  .section-head h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.2;
+    margin: 0 0 14px 0;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+  }
+
+  .section-head h2 span.accent {
+    color: var(--coral);
+  }
+
+  .section-head p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* ============ BENEFITS ============ */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .benefit-card {
+    background: var(--paper-card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 30px 24px;
+  }
+
+  .benefit-card.filled {
+    background: linear-gradient(150deg, var(--navy) 0%, var(--navy-deep) 100%);
+    border: none;
+  }
+
+  .benefit-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: rgba(238,27,36,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .benefit-card.filled .benefit-icon { background: rgba(255,255,255,0.12); }
+
+  .benefit-icon svg { width: 22px; height: 22px; }
+
+  .icon-glyph {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .benefit-card h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    margin: 0 0 10px 0;
+    color: var(--navy);
+  }
+
+  .benefit-card.filled h3 { color: #fff; }
+
+  .benefit-card p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .benefit-card.filled p { color: rgba(244,247,251,0.72); }
+
+  @media (max-width: 900px) {
+    .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .benefits-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ============ WHO CAN PARTNER ============ */
+  .who-block {
+    background: var(--paper-card);
+  }
+
+  .who-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  .entity-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .entity-pills span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    background: #EEF3FB;
+    border: 1px solid #D9E3EE;
+    padding: 8px 16px;
+    border-radius: 100px;
+  }
+
+  .criteria-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .criteria-list li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .criteria-check {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--coral);
+    flex-shrink: 0;
+    margin-top: 1px;
+    position: relative;
+  }
+
+  .criteria-check::after {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 4px;
+    width: 5px;
+    height: 9px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .criteria-list p {
+    font-family: 'DM Sans', sans-serif;
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  .criteria-list p strong { font-weight: 700; }
+
+  .docs-note {
+    margin-top: 28px;
+    padding: 18px 20px;
+    background: var(--paper);
+    border-left: 3px solid var(--coral);
+    border-radius: 0 10px 10px 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* ============ PROCESS ============ */
+  .process-block {
+    background: linear-gradient(102deg, var(--hero-1) 0%, var(--hero-2) 36%, var(--hero-3) 70%, var(--navy) 100%);
+    color: #F4F7FB;
+  }
+
+  .process-block .section-eyebrow { color: var(--coral); }
+  .process-block .section-head h2 { color: #fff; }
+  .process-block .section-head h2 span.accent { color: var(--coral); }
+  .process-block .section-head p { color: rgba(202,222,247,0.76); }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+
+  .process-step {
+    position: relative;
+    padding-top: 22px;
+    border-top: 1px solid rgba(244,247,251,0.2);
+  }
+
+  .process-step .step-index {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    color: var(--coral);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .process-step h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    margin: 0 0 10px 0;
+    color: #fff;
+  }
+
+  .process-step p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: rgba(202,222,247,0.76);
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+    .who-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 560px) {
+    .process-steps { grid-template-columns: 1fr; }
+  }
+
+  /* ============ FAQ ============ */
+  .faq-list {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .faq-item {
+    background: var(--paper-card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 0 22px;
+  }
+
+  .faq-q {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .faq-q .icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #EEF3FB;
+    position: relative;
+  }
+
+  .faq-q .icon::before,
+  .faq-q .icon::after {
+    content: "";
+    position: absolute;
+    background: var(--coral);
+    transition: transform 0.2s ease;
+  }
+
+  .faq-q .icon::before {
+    left: 5px; top: 10px; width: 12px; height: 2px;
+  }
+
+  .faq-q .icon::after {
+    left: 10px; top: 5px; width: 2px; height: 12px;
+  }
+
+  .faq-item.open .faq-q .icon::after { transform: rotate(90deg); opacity: 0; }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+
+  .faq-item.open .faq-a { max-height: 300px; }
+
+  .faq-a p {
+    font-family: 'DM Sans', sans-serif;
+    margin: 0 0 20px 0;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  /* ============ FOOTER CTA ============ */
+  .footer-cta {
+    background: var(--paper-card);
+    border-top: 1px solid var(--line);
+    text-align: center;
+    padding: 72px 24px;
+  }
+
+  .footer-cta h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--navy);
+    margin: 0 0 14px 0;
+  }
+
+  .footer-cta h2 span.accent { color: var(--coral); }
+
+  .footer-cta p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin: 0 0 28px 0;
+  }
+
+  .footer-cta a.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+    background: var(--coral);
+    padding: 14px 18px 14px 30px;
+    border-radius: 100px;
+    text-decoration: none;
+    box-shadow: 0 14px 34px -14px rgba(238,27,36,0.85);
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ============ TOP NAV ============ -->
+<div class="topnav">
+  <div class="topnav-inner">
+    <a href="#top" class="wordmark"><img src="data:image/png;base64,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" alt="Infina" class="logo-real"></a>
+    <div class="topnav-right">
+      <div class="topnav-links">
+        <a href="#why">Why partner</a>
+        <a href="#eligibility">Eligibility</a>
+        <a href="#process">How it works</a>
+        <a href="#faq">FAQs</a>
+      </div>
+      <a href="#apply" class="topnav-cta">Apply now</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<div class="hero-outer" id="top">
+  <div class="card" id="apply">
+
+    <div class="info-panel">
+      <div>
+        <div class="eyebrow">Channel Partner Program</div>
+        <h1>Earn with every loan you <span>help place.</span></h1>
+        <p class="lede">Placeholder copy, final messaging to be supplied by the client. Partner with Infina to originate loans, earn on every disbursal, and get dedicated support from onboarding through payout.</p>
+      </div>
+
+      <div class="eligibility">
+        <h3>Who can apply</h3>
+        <ul>
+          <li>Individuals, partnerships, private/public limited companies, societies, or cooperative banks</li>
+          <li>Existing agents from insurance, real estate, or financial services backgrounds</li>
+          <li>Freelancers or self-employed professionals with an active local network</li>
+        </ul>
+      </div>
+
+      <div class="voucher-tag">Application No. Assigned on review</div>
+    </div>
+
+    <div class="form-panel">
+      <div class="form-header">
+        <div class="step-label">Channel Partner Sign-Up</div>
+        <h2>Start your Channel Partner application</h2>
+      </div>
+
+      <form>
+        <div class="field">
+          <label for="fullname">Full name<span class="req">*</span></label>
+          <input type="text" id="fullname" placeholder="Enter your full name" required>
+          <div class="hint">As it appears on your PAN card</div>
+        </div>
+
+        <div class="field">
+          <label for="mobile">Mobile number<span class="req">*</span></label>
+          <input type="tel" id="mobile" placeholder="10-digit mobile number" maxlength="10" required>
+          <div class="error-msg">Enter a valid 10-digit mobile number</div>
+        </div>
+
+        <div class="field">
+          <label for="email">Email ID<span class="req">*</span></label>
+          <input type="email" id="email" placeholder="you@example.com" required>
+        </div>
+
+        <div class="field">
+          <label for="pincode">Pin code<span class="req">*</span></label>
+          <input type="text" id="pincode" placeholder="6-digit pin code" maxlength="6" required>
+        </div>
+
+        <div class="field full">
+          <label for="location">Location / City<span class="req">*</span></label>
+          <input type="text" id="location" placeholder="City, State" required>
+        </div>
+
+        <div class="field full">
+          <label for="entity">Entity type<span class="req">*</span></label>
+          <select id="entity" required>
+            <option value="" disabled selected>Select</option>
+            <option>Individual</option>
+            <option>Partnership</option>
+            <option>Private Limited</option>
+            <option>Public Limited</option>
+            <option>Society</option>
+            <option>Cooperative Bank</option>
+          </select>
+        </div>
+
+        <div class="submit-row">
+          <button type="submit" class="submit">Submit application <span class="btn-arrow-circle">&#8594;</span></button>
+          <div class="reassurance"><strong>What happens next:</strong> our channel partner team reviews every application manually and a Relationship Manager will reach out within 1 to 2 business days to guide you through the next steps.</div>
+        </div>
+
+        <div class="consent">By submitting, you agree to be contacted by Infina regarding this application and consent to our Privacy Policy and Terms of Use.</div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="trust-strip">
+  <div class="wrap">
+    <div class="trust-label">Backed by lending partners across India</div>
+    <div class="trust-logos">
+      <span>Partner One</span>
+      <span>Partner Two</span>
+      <span>Partner Three</span>
+      <span>Partner Four</span>
+      <span>Partner Five</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ WHY PARTNER ============ -->
+<section class="block" id="why">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="section-eyebrow">Why partner with Infina</div>
+      <h2>Built for people who <span class="accent">already</span> have the network.</h2>
+      <p>Placeholder copy, a straightforward structure so your relationships turn into recurring income, with the operational support to back every case you bring in.</p>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit-card filled">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="6" rx="7" ry="3" stroke="#EE1B24" stroke-width="1.8"/><path d="M5 6v5c0 1.66 3.13 3 7 3s7-1.34 7-3V6" stroke="#EE1B24" stroke-width="1.8" stroke-linecap="round"/><path d="M5 11v5c0 1.66 3.13 3 7 3s7-1.34 7-3v-5" stroke="#EE1B24" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Competitive payouts</h3>
+        <p>Placeholder, earn a transparent commission on every loan disbursed, credited on a fixed cycle with no hidden deductions.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 15v-3a8 8 0 0116 0v3" stroke="#EE1B24" stroke-width="1.8" stroke-linecap="round"/><rect x="2.5" y="14" width="4" height="6" rx="1.6" stroke="#EE1B24" stroke-width="1.8"/><rect x="17.5" y="14" width="4" height="6" rx="1.6" stroke="#EE1B24" stroke-width="1.8"/></svg>
+        </div>
+        <h3>Dedicated RM support</h3>
+        <p>Placeholder, a named Relationship Manager guides you from onboarding through your first disbursal and every case after.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="1.8" stroke="#EE1B24" stroke-width="1.8"/><rect x="13" y="3" width="8" height="8" rx="1.8" stroke="#EE1B24" stroke-width="1.8"/><rect x="13" y="13" width="8" height="8" rx="1.8" stroke="#EE1B24" stroke-width="1.8"/><rect x="3" y="13" width="8" height="8" rx="1.8" stroke="#EE1B24" stroke-width="1.8"/></svg>
+        </div>
+        <h3>Partner dashboard</h3>
+        <p>Placeholder, track leads, application status, and payouts in one place, without chasing anyone for updates.</p>
+      </div>
+      <div class="benefit-card filled">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13" r="8" stroke="#EE1B24" stroke-width="1.8"/><path d="M12 9v4l3 2" stroke="#EE1B24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 2h4M12 2v2.2" stroke="#EE1B24" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Fast turnaround</h3>
+        <p>Placeholder, quick eligibility checks and a streamlined approval process mean less waiting for your customers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHO CAN PARTNER ============ -->
+<section class="block who-block" id="eligibility">
+  <div class="wrap">
+    <div class="section-head left">
+      <div class="section-eyebrow">Eligibility</div>
+      <h2>Who can become <span class="accent">a partner.</span></h2>
+    </div>
+
+    <div class="who-grid">
+      <div>
+        <h4 style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:14px;color:var(--navy);margin:0 0 10px 0;">Eligible entity types</h4>
+        <div class="entity-pills">
+          <span>Individual</span>
+          <span>Partnership</span>
+          <span>Private Limited</span>
+          <span>Public Limited</span>
+          <span>Society</span>
+          <span>Cooperative Bank</span>
+        </div>
+        <div class="docs-note">Placeholder, document requirements vary by entity type and will be shared by your Relationship Manager once your application is reviewed (typically PAN, Aadhaar, bank details, and business registration proof where applicable).</div>
+      </div>
+
+      <ul class="criteria-list">
+        <li>
+          <span class="criteria-check"></span>
+          <p><strong>21 years or above</strong> and an Indian resident with a valid, verifiable KYC.</p>
+        </li>
+        <li>
+          <span class="criteria-check"></span>
+          <p><strong>Active local network</strong>, insurance, real estate, financial services agents, or self-employed professionals welcome.</p>
+        </li>
+        <li>
+          <span class="criteria-check"></span>
+          <p><strong>No prior default history</strong> and a clean background check.</p>
+        </li>
+        <li>
+          <span class="criteria-check"></span>
+          <p><strong>Existing Infina employees</strong> and their immediate family members are not eligible to apply.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="block process-block" id="process">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="section-eyebrow">How it works</div>
+      <h2>From application to <span class="accent">your first payout.</span></h2>
+      <p>Placeholder, a manual review at every step, so you always know where your application stands.</p>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <span class="step-index">01</span>
+        <h3>Apply online</h3>
+        <p>Share your details through the form above. Takes under two minutes.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-index">02</span>
+        <h3>Verification</h3>
+        <p>Our team reviews your application and documents, and runs standard KYC checks.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-index">03</span>
+        <h3>Agreement</h3>
+        <p>Sign the partner agreement and get your unique Channel Partner code.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-index">04</span>
+        <h3>Start referring</h3>
+        <p>Log in to your dashboard, submit leads, and track payouts as loans disburse.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="block" id="faq">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="section-eyebrow">FAQs</div>
+      <h2>Common <span class="accent">questions.</span></h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-q" type="button">
+          Is there a fee to become a Channel Partner?
+          <span class="icon"></span>
+        </button>
+        <div class="faq-a"><p>Placeholder answer, confirm final fee structure, if any, with the client before publishing.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">
+          How and when are commissions paid out?
+          <span class="icon"></span>
+        </button>
+        <div class="faq-a"><p>Placeholder answer, describe payout cycle and method once finalised.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">
+          What documents do I need to apply?
+          <span class="icon"></span>
+        </button>
+        <div class="faq-a"><p>Placeholder answer, list documents by entity type once finalised.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">
+          How long does verification take?
+          <span class="icon"></span>
+        </button>
+        <div class="faq-a"><p>Placeholder answer, confirm expected turnaround with the partnerships team.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">
+          Can I partner if I already work with another lender?
+          <span class="icon"></span>
+        </button>
+        <div class="faq-a"><p>Placeholder answer, confirm exclusivity terms, if any.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER CTA ============ -->
+<div class="footer-cta">
+  <h2>Ready to <span class="accent">get started?</span></h2>
+  <p>Placeholder copy, the application takes under two minutes.</p>
+  <a href="#apply" class="btn">Apply to become a partner <span class="btn-arrow-circle">&#8594;</span></a>
+</div>
+
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.faq-item');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function (i) { i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  var form = document.querySelector('form');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('This is a mockup. Wire this form up to your CRM or lead capture endpoint before going live.');
+    });
+  }
+</script>
+
+</body>
+</html>
