@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESOP Funding Calculator</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,650&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap');
+
+  /* ── Infina brand tokens ──────────────────────────────────────── */
+  :root {
+    --navy:    #003368;   /* Infina primary — buttons, accents, focus */
+    --navy-2:  #00275A;   /* Deeper navy for hover/gradient */
+    --red:     #E03131;   /* Infina red — logo, Apply Now hover */
+    --ink:     #0B1C2C;
+    --ink-2:   #132C40;
+    --page:    #FFFFFF;
+    --panel:   #FFFFFF;
+    --border:  #E3E8F0;
+    --slate:   #64748B;
+    --mono:    'Plus Jakarta Sans', 'Plus-Jakarta-Sans', sans-serif;
+    --sans:    'DM Sans', 'Inter', -apple-system, sans-serif;
+    --disp:    'Fraunces', serif;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1020px; margin: 0 auto; padding: 36px 24px 60px; }
+
+  /* ── Grid ─────────────────────────────────────────────────────── */
+  .grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 22px; align-items: start; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+  /* ── Cards ────────────────────────────────────────────────────── */
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: 0 1px 3px rgba(0,51,104,.05); }
+  .card + .card { margin-top: 18px; }
+  .divider-lbl { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--slate); margin: 22px 0 10px; }
+  .divider-lbl:first-child { margin-top: 0; }
+
+  /* ── Fields ───────────────────────────────────────────────────── */
+  .field { margin-bottom: 20px; }
+  .field:last-child { margin-bottom: 0; }
+  .field label { display: flex; justify-content: space-between; font-size: 13.5px; color: var(--ink); font-weight: 600; margin-bottom: 7px; }
+  .field .subnote { font-size: 11px; color: var(--slate); font-weight: 400; margin-top: 4px; }
+  .input-row { display: flex; align-items: center; border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; background: #F5F7FB; transition: border-color .2s, box-shadow .2s; }
+  .input-row:focus-within { border-color: var(--navy); box-shadow: 0 0 0 4px rgba(0,51,104,.10); }
+  .input-row .prefix { padding: 11px 10px 11px 14px; color: var(--slate); font-family: var(--mono); font-size: 13.5px; border-right: 1px solid var(--border); background: #EEF1F6; }
+  .input-row input { border: none; background: transparent; padding: 11px; font-family: var(--mono); font-size: 15px; font-weight: 600; width: 100%; color: var(--ink); outline: none; }
+
+  /* ── Sliders ──────────────────────────────────────────────────── */
+  .slider-block { margin-top: 8px; }
+  input[type=range] { -webkit-appearance: none; width: 100%; height: 5px; border-radius: 4px; background: var(--border); outline: none; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--navy); cursor: pointer; box-shadow: 0 2px 5px rgba(0,51,104,.30); }
+  .range-caption { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10.5px; color: var(--slate); margin-top: 6px; }
+
+  /* ── KV list ──────────────────────────────────────────────────── */
+  .kv-list .kv { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; font-size: 12.5px; color: var(--slate); padding: 10px 0; border-bottom: 1px dashed var(--border); }
+  .kv-list .kv:last-child { border: none; }
+  .kv-list .kv b { color: var(--ink); font-family: var(--mono); font-size: 12.5px; white-space: nowrap; }
+  .kv-list .kv .k-main { max-width: 230px; }
+  .kv-list .kv .k-sub { display: block; font-size: 10.5px; color: #9aa3ab; margin-top: 2px; font-weight: 400; }
+
+  .static-tag { display: inline-block; font-family: var(--mono); font-size: 9px; color: var(--navy); background: #DEEBF6; border: 1px solid #B8CFEA; border-radius: 5px; padding: 1px 6px; margin-left: 6px; vertical-align: middle; }
+
+  /* Processing fee row — always visible */
+  .proc-row { display: flex; }
+
+  /* Active slab highlight */
+  .slab-mini.active { color: var(--navy); }
+  .slab-mini.active b { color: var(--navy); }
+
+  /* ── Result panel ─────────────────────────────────────────────── */
+  .formula-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 13px 0; border-bottom: 1px solid var(--border); }
+  .formula-row:last-child { border-bottom: none; }
+  .formula-row .lbl { font-size: 13.5px; color: var(--ink); font-weight: 600; }
+  .formula-row .lbl .f { display: block; font-family: var(--mono); font-size: 10.5px; color: var(--slate); font-weight: 400; margin-top: 3px; }
+  .formula-row .val { font-family: var(--mono); font-size: 15px; font-weight: 700; color: var(--ink); white-space: nowrap; padding-left: 12px; font-variant-numeric: tabular-nums; }
+
+  /* Hero row — navy gradient (Employee Contribution, Estimated Cost) */
+  .formula-row.hero-row {
+    background: linear-gradient(135deg, var(--navy), var(--navy-2));
+    margin: 8px -12px 4px;
+    padding: 15px 12px;
+    border-radius: 12px;
+    border-bottom: none;
+  }
+  .formula-row.hero-row .lbl { color: #FFFFFF; }
+  .formula-row.hero-row .lbl .f { color: rgba(255,255,255,.65); }
+  .formula-row.hero-row .val { color: #FFFFFF; font-size: 18px; }
+
+  /* C row — plain with top divider (subtotal separator) */
+  .formula-row.subtotal-row {
+    border-top: 2px solid var(--border);
+    margin-top: 6px;
+    padding-top: 14px;
+  }
+
+  /* D row — Infina's contribution: light navy tint + left accent border */
+  .formula-row.infina-row {
+    background: #EEF3FA;
+    border-left: 3px solid var(--navy);
+    margin: 6px -12px 2px;
+    padding: 12px 12px 12px 13px;
+    border-radius: 0 8px 8px 0;
+    border-bottom: none;
+  }
+  .formula-row.infina-row .lbl { color: var(--navy); font-weight: 600; }
+  .formula-row.infina-row .lbl .f { color: var(--slate); }
+  .formula-row.infina-row .val { color: var(--navy); font-size: 15px; font-weight: 700; }
+
+  .section-title { font-family: var(--disp); font-size: 17px; font-weight: 650; color: var(--navy); margin: 0 0 4px; letter-spacing: -0.01em; }
+  .section-caption { font-size: 11.5px; color: var(--slate); margin-bottom: 14px; }
+
+  /* ── Slab table ───────────────────────────────────────────────── */
+  table.slab-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 11.5px; }
+  table.slab-table th { text-align: left; font-family: var(--mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--slate); padding: 6px 8px; border-bottom: 1px solid var(--border); }
+  table.slab-table td { padding: 8px; border-bottom: 1px dashed var(--border); font-family: var(--mono); color: var(--ink); }
+  table.slab-table tr.active td { color: var(--navy); font-weight: 600; }
+  table.slab-table td:last-child, table.slab-table th:last-child { text-align: right; }
+
+  /* ── Buttons ──────────────────────────────────────────────────── */
+  .cta-row { display: flex; gap: 10px; margin-top: 16px; }
+
+  /* Apply Now — navy, red on hover */
+  .cta {
+    flex: 1;
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 50px;   /* pill shape matching live site */
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: var(--sans);
+    box-shadow: 0 4px 14px rgba(0,51,104,.22);
+    transition: background .18s, transform .15s, box-shadow .18s;
+    letter-spacing: .01em;
+  }
+  .cta:hover {
+    background: var(--red);
+    box-shadow: 0 4px 14px rgba(224,49,49,.30);
+    transform: translateY(-1px);
+  }
+  .cta:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
+
+  /* Export — outline ghost */
+  .cta.ghost {
+    background: #fff;
+    color: var(--ink);
+    border: 1.5px solid var(--border);
+    box-shadow: none;
+    border-radius: 50px;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    padding: 13px 18px;
+  }
+  .cta.ghost:hover { border-color: var(--red); color: #fff; background: var(--red); box-shadow: 0 4px 14px rgba(224,49,49,.30); transform: translateY(-1px); }
+
+  /* ── Page header ─────────────────────────────────────────────── */
+  .page-header { margin-bottom: 28px; text-align: center; }
+  .page-title { font-family: var(--disp); font-size: 30px; font-weight: 650; color: var(--navy); margin: 0 0 8px; line-height: 1.15; }
+  .page-sub { font-size: 14.5px; color: var(--slate); margin: 0 auto; line-height: 1.55; max-width: 560px; }
+
+  /* ── Notes ────────────────────────────────────────────────────── */
+  .notes { margin-top: 26px; border-top: 1px solid var(--border); padding-top: 26px; }
+  .notes-title { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--slate); text-align: center; margin-bottom: 20px; }
+  .notes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 40px; }
+  @media (max-width: 700px) { .notes-grid { grid-template-columns: 1fr; } }
+  .note-item h4 { font-family: var(--disp); font-size: 14.5px; font-weight: 600; margin: 0 0 6px; color: var(--navy); }
+  .note-item p { font-size: 12.5px; color: var(--slate); line-height: 1.55; margin: 0; }
+  .fine { text-align: center; font-size: 11px; color: var(--slate); margin-top: 22px; line-height: 1.5; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="page-header">
+    <h1 class="page-title">ESOP Funding Calculator</h1>
+    <p class="page-sub">Estimate your out-of-pocket cost when exercising employee stock options with Infina funding.</p>
+  </div>
+  <div class="grid">
+
+    <!-- LEFT: INPUTS ─────────────────────────────────────────────── -->
+    <div>
+      <div class="card">
+        <div class="field">
+          <label>Current Market Price (CMP)</label>
+          <div class="input-row"><span class="prefix">₹</span><input id="cmp" type="number" value="200" min="0"></div>
+        </div>
+        <div class="field">
+          <label>Exercise Price</label>
+          <div class="input-row"><span class="prefix">₹</span><input id="ex" type="number" value="100" min="0"></div>
+        </div>
+        <div class="field">
+          <label>Exercise Quantity</label>
+          <div class="input-row"><span class="prefix">#</span><input id="qty" type="number" value="1000" min="1"></div>
+        </div>
+        <div class="field">
+          <label>Loan Tenure <span id="holdVal" style="color:var(--navy);"></span></label>
+          <div class="slider-block">
+            <input id="hold" type="range" min="1" max="730" value="180" step="1">
+            <div class="range-caption"><span>1 day</span><span>730 days</span></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Tax Rate <span id="taxVal" style="color:var(--navy);"></span></label>
+          <div class="subnote">Select your tax rate as per your income slab</div>
+          <div class="slider-block">
+            <input id="tax" type="range" min="30" max="39" value="30">
+            <div class="range-caption"><span>30%</span><span>39%</span></div>
+          </div>
+        </div>
+
+        <div class="divider-lbl">Key Details</div>
+        <div class="kv-list">
+          <div class="kv">
+            <span class="k-main">Infina Funding<span class="k-sub">50% of CMP or total employer payable, whichever is lower</span></span>
+            <b id="kv-fund">₹0</b>
+          </div>
+          <div class="kv">
+            <span class="k-main">Documentation Charges (incl. GST)<span class="k-sub">Including 18% GST</span></span>
+            <b>₹1,179<span class="static-tag">STATIC</span></b>
+          </div>
+          <div class="kv proc-row" id="proc-left">
+            <span class="k-main">Processing Fees (incl. 18% GST)<span class="k-sub">0.25% of Infina Funding, plus 18% GST on the fee</span></span>
+            <b id="kv-proc">₹0</b>
+          </div>
+          <div class="kv">
+            <span class="k-main">Brokerage*<span class="k-sub">Only if shares are sold through Infina</span></span>
+            <b>0.08%</b>
+          </div>
+        </div>
+
+        <div class="divider-lbl">Interest Rate Slabs</div>
+        <div class="kv-list">
+          <div class="kv slab-mini" id="s1"><span>0 – 30 days</span><b>8.50% p.a.</b></div>
+          <div class="kv slab-mini" id="s2"><span>31 – 90 days</span><b>9.00% p.a.</b></div>
+          <div class="kv slab-mini" id="s3"><span>91 – 180 days</span><b>9.50% p.a.</b></div>
+          <div class="kv slab-mini" id="s4"><span>181 – 365 days</span><b>10.50% p.a.</b></div>
+          <div class="kv slab-mini" id="s5"><span>366 – 730 days</span><b>10.50% p.a.</b></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: RESULTS ───────────────────────────────────────────── -->
+    <div>
+      <div class="card">
+        <div class="section-title">Cost Breakup</div>
+        <div class="section-caption">A → E · each step builds on the previous</div>
+
+        <div class="formula-row">
+          <span class="lbl">A. Exercise Cost<span class="f">Exercise Price × Qty</span></span>
+          <span class="val" id="o-a">₹0</span>
+        </div>
+        <div class="formula-row">
+          <span class="lbl">B. Perquisite Tax<span class="f">(CMP - Exercise Price) × Qty × Tax%</span></span>
+          <span class="val" id="o-b">₹0</span>
+        </div>
+        <div class="formula-row navy-row">
+          <span class="lbl">C. Total Payable to Employer<span class="f">A + B</span></span>
+          <span class="val" id="o-c">₹0</span>
+        </div>
+        <div class="formula-row navy-row" style="margin-top:4px;">
+          <span class="lbl">D. Infina Funding<span class="f">50% of CMP (capped at C)</span></span>
+          <span class="val" id="o-d">₹0</span>
+        </div>
+        <div class="formula-row hero-row">
+          <span class="lbl">E. Employee Contribution<span class="f">C - D</span></span>
+          <span class="val" id="o-e">₹0</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-title">Cost of Funding</div>
+        <div class="section-caption">Financing cost over <span id="tenure-lbl">180</span> days</div>
+
+        <div class="formula-row">
+          <span class="lbl">Estimated Interest<span class="f">Sum of tiered slab interest below</span></span>
+          <span class="val" id="o-int">₹0</span>
+        </div>
+        <div class="formula-row proc-row" id="proc-right">
+          <span class="lbl">Processing Fees<span class="f">(0.25% x Infina Funding) + 18% GST</span></span>
+          <span class="val" id="o-proc">₹0</span>
+        </div>
+        <div class="formula-row">
+          <span class="lbl">Documentation Charges<span class="f">Flat, incl. GST</span></span>
+          <span class="val" id="o-doc">₹1,179</span>
+        </div>
+        <div class="formula-row hero-row" style="margin-bottom:0;">
+          <span class="lbl">Estimated Cost of Funding</span>
+          <span class="val" id="o-net">₹0</span>
+        </div>
+
+        <div class="divider-lbl" style="margin-top:22px;">Financing Cost over <span id="tenure-lbl-2">180</span> Days</div>
+        <table class="slab-table">
+          <thead><tr><th>Slab</th><th>Rate</th><th>Days</th><th>Interest</th></tr></thead>
+          <tbody id="slab-body"></tbody>
+        </table>
+
+        <div class="cta-row">
+          <button class="cta">Apply Now</button>
+          <button class="cta ghost" id="export-btn">⬇ Export to Excel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes">
+    <div class="notes-title">Important Notes</div>
+    <div class="notes-grid">
+      <div class="note-item">
+        <h4>Fair Market Value (FMV)</h4>
+        <p>The average of the stock's price at the start and end of the date of exercise.</p>
+      </div>
+      <div class="note-item">
+        <h4>Infina Funding</h4>
+        <p>Infina funds up to 50% of the CMP. Any amount above this limit and payable to the employer becomes the employee's contribution, payable via cash or by pledging additional securities.</p>
+      </div>
+      <div class="note-item">
+        <h4>Exercise Price</h4>
+        <p>The locked-in price at which you get to buy your shares. Set when your ESOPs were granted, usually much lower than today's FMV.</p>
+      </div>
+      <div class="note-item">
+        <h4>Employee Contribution</h4>
+        <p>The amount you arrange after Infina funds 50% of your share's market value. It covers your exercise cost, perquisite tax, and applicable charges.</p>
+      </div>
+    </div>
+    <div class="fine">*Brokerage applicable only on sale of shares through Infina. Interest is calculated on a tiered basis per actual holding period. Processing Fees of 0.25% + 18% GST apply only for loan tenures exceeding 365 days. Results are indicative; final terms subject to credit approval.</div>
+  </div>
+</div>
+
+<script>
+function fmt(n){ return '₹' + Math.round(n).toLocaleString('en-IN'); }
+function num(n){ return Math.round(n*100)/100; }
+function setAnimated(el, newVal){
+  const prev = parseFloat(el.dataset.raw || '0');
+  el.dataset.raw = newVal;
+  const raf = window.requestAnimationFrame || function(cb){ return setTimeout(()=>cb(performance.now()), 16); };
+  const start = performance.now(), dur = 400;
+  function step(t){
+    const p = Math.min((t-start)/dur, 1);
+    const eased = 1 - Math.pow(1-p, 3);
+    el.textContent = fmt(prev + (newVal-prev)*eased);
+    if(p<1) raf(step);
+  }
+  raf(step);
+}
+
+let lastResult = {};
+
+function calc(){
+  const cmp    = parseFloat(document.getElementById('cmp').value)  || 0;
+  const ex     = parseFloat(document.getElementById('ex').value)   || 0;
+  const qty    = parseFloat(document.getElementById('qty').value)  || 0;
+  const taxPct = parseFloat(document.getElementById('tax').value)  || 30;
+  const tax    = taxPct / 100;
+  const hold   = parseInt(document.getElementById('hold').value)   || 0;
+
+  document.getElementById('holdVal').textContent     = hold + ' days';
+  document.getElementById('taxVal').textContent      = taxPct + '%';
+  document.getElementById('tenure-lbl').textContent  = hold;
+  document.getElementById('tenure-lbl-2').textContent = hold;
+
+  // A–E
+  const A = ex * qty;
+  const B = Math.max(cmp - ex, 0) * qty * tax;
+  const C = A + B;
+  const D = Math.min(cmp * qty * 0.5, C);
+  const E = Math.max(C - D, 0);
+
+  // Static documentation charge
+  const documentation = 1179;
+
+  // Processing fees: only for tenure > 365 days
+  const isLongTenure = hold > 365;
+  const processing = D * 0.0025 * 1.18;
+
+  document.getElementById('kv-proc').textContent = fmt(processing);
+  setAnimated(document.getElementById('o-proc'), processing);
+
+  // Tiered interest — each slab's bucket consumed in order
+  const slabs = [
+    {bucket:30,  rate:0.085, id:'s1', label:'0–30 days'},
+    {bucket:60,  rate:0.090, id:'s2', label:'31–90 days'},
+    {bucket:90,  rate:0.095, id:'s3', label:'91–180 days'},
+    {bucket:185, rate:0.105, id:'s4', label:'181–365 days'},
+    {bucket:365, rate:0.105, id:'s5', label:'366–730 days'},
+  ];
+
+  let remaining = hold, interest = 0, rows = [];
+  slabs.forEach(s => {
+    const el   = document.getElementById(s.id);
+    const used = Math.min(remaining, s.bucket);
+    el.classList.toggle('active', used > 0);
+    if(used > 0){
+      const amt = D * s.rate * used / 365;
+      interest += amt;
+      rows.push(`<tr class="active"><td>${s.label}</td><td>${(s.rate*100).toFixed(2)}%</td><td>${used}</td><td>${fmt(amt)}</td></tr>`);
+    }
+    remaining = Math.max(remaining - used, 0);
+  });
+  document.getElementById('slab-body').innerHTML = rows.join('');
+
+  const netCost = interest + processing + documentation;
+
+  setAnimated(document.getElementById('o-a'),   A);
+  setAnimated(document.getElementById('o-b'),   B);
+  setAnimated(document.getElementById('o-c'),   C);
+  setAnimated(document.getElementById('o-d'),   D);
+  setAnimated(document.getElementById('o-e'),   E);
+  setAnimated(document.getElementById('o-int'), interest);
+  setAnimated(document.getElementById('o-net'), netCost);
+  document.getElementById('kv-fund').textContent = fmt(D);
+  document.getElementById('o-doc').textContent   = fmt(documentation);
+
+  lastResult = {cmp, ex, qty, taxPct, hold, A, B, C, D, E,
+                documentation, processing, interest, netCost, isLongTenure};
+}
+
+['cmp','ex','qty','hold','tax'].forEach(id => {
+  const el = document.getElementById(id);
+  el.addEventListener('input',  calc);
+  el.addEventListener('change', calc);
+});
+window.addEventListener('DOMContentLoaded', calc);
+calc();
+
+document.getElementById('export-btn').addEventListener('click', function(){
+  const r = lastResult;
+  const rows = [
+    ['Infina ESOP Funding Calculator'],
+    [],
+    ['Inputs'],
+    ['Current Market Price (CMP)', r.cmp],
+    ['Exercise Price', r.ex],
+    ['Exercise Quantity', r.qty],
+    ['Loan Tenure (days)', r.hold],
+    ['Tax Rate', r.taxPct + '%'],
+    [],
+    ['Cost Breakup'],
+    ['A. Exercise Cost  (Exercise Price × Qty)', num(r.A)],
+    ['B. Perquisite Tax  ((CMP − EP) × Qty × Tax Slab)', num(r.B)],
+    ['C. Total Payable to Employer  (A + B)', num(r.C)],
+    ['D. Infina Funding  (50% of CMP × Qty, capped at C)', num(r.D)],
+    ['E. Employee Contribution  (C − D)', num(r.E)],
+    [],
+    ['Financing Cost over ' + r.hold + ' Days'],
+    ['Estimated Interest (tiered slab basis)', num(r.interest)],
+    ['Processing Fees  (0.25% × Infina Funding + 18% GST)', num(r.processing)],
+    ['Documentation Charges (flat, incl. GST)', num(r.documentation)],
+    ['Estimated Cost of Funding', num(r.netCost)],
+  ];
+  const ws = XLSX.utils.aoa_to_sheet(rows);
+  ws['!cols'] = [{wch:56},{wch:16}];
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'ESOP Calculation');
+  XLSX.writeFile(wb, 'ESOP-Funding-Calculation.xlsx');
+});
+</script>
+</body>
+</html>
