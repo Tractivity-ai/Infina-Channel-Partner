@@ -685,10 +685,8 @@
     height: 22px;
   }
 
-  .dsa-category.filled .entity-pills span {
-    background: rgba(255,255,255,0.14);
-    color: #fff;
-    border-color: rgba(255,255,255,0.28);
+  .dsa-category.filled .entity-list li {
+    color: rgba(244,247,251,0.92);
   }
 
   @media (max-width: 900px) {
@@ -705,11 +703,33 @@
     align-items: start;
   }
 
-  .entity-pills {
+  .entity-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 10px;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .entity-list li {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--ink);
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .entity-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 5px;
+    height: 5px;
+    background: var(--coral);
+    border-radius: 50%;
   }
 
   .who-grid > ul {
@@ -732,17 +752,6 @@
     font-weight: 700;
     color: var(--coral);
     margin: 0;
-  }
-
-  .entity-pills span {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--navy);
-    background: #EEF3FB;
-    border: 1px solid #D9E3EE;
-    padding: 8px 16px;
-    border-radius: 100px;
   }
 
   .criteria-list {
@@ -1163,14 +1172,14 @@
           <svg viewBox="0 0 24 24" fill="none"><path d="M4 16l5-5 4 4 7-7" stroke="#EE1B24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 8h5v5" stroke="#EE1B24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <h5>Wealth &amp; Investment Partners</h5>
-        <div class="entity-pills">
-          <span>MF Distributors</span>
-          <span>Wealth Advisors</span>
-          <span>Investment Advisors</span>
-          <span>Stockbrokers / Sub-brokers</span>
-          <span>Financial Planners</span>
-          <span>PMS / Portfolio Advisory Firms</span>
-        </div>
+        <ul class="entity-list">
+          <li>MF Distributors</li>
+          <li>Wealth Advisors</li>
+          <li>Investment Advisors</li>
+          <li>Stockbrokers / Sub-brokers</li>
+          <li>Financial Planners</li>
+          <li>PMS / Portfolio Advisory Firms</li>
+        </ul>
       </div>
 
       <div class="dsa-category">
@@ -1178,12 +1187,12 @@
           <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="12" rx="2" stroke="#EE1B24" stroke-width="1.8"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2" stroke="#EE1B24" stroke-width="1.8"/><path d="M3 12h18" stroke="#EE1B24" stroke-width="1.8"/></svg>
         </div>
         <h5>Professional Partners</h5>
-        <div class="entity-pills">
-          <span>CAs</span>
-          <span>CSs</span>
-          <span>Auditors</span>
-          <span>CFO Consultants</span>
-        </div>
+        <ul class="entity-list">
+          <li>CAs</li>
+          <li>CSs</li>
+          <li>Auditors</li>
+          <li>CFO Consultants</li>
+        </ul>
       </div>
 
       <div class="dsa-category filled">
@@ -1191,13 +1200,13 @@
           <svg viewBox="0 0 24 24" fill="none"><path d="M3 10l9-6 9 6" stroke="#EE1B24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v8M10 10v8M14 10v8M19 10v8" stroke="#EE1B24" stroke-width="1.8" stroke-linecap="round"/><path d="M3 20h18" stroke="#EE1B24" stroke-width="1.8" stroke-linecap="round"/></svg>
         </div>
         <h5>Finance &amp; Loan Partners</h5>
-        <div class="entity-pills">
-          <span>Loan DSAs</span>
-          <span>Financial Consultants</span>
-          <span>Corporate Finance Advisors</span>
-          <span>Credit Consultants</span>
-          <span>NBFC/BFSI Referral Partners</span>
-        </div>
+        <ul class="entity-list">
+          <li>Loan DSAs</li>
+          <li>Financial Consultants</li>
+          <li>Corporate Finance Advisors</li>
+          <li>Credit Consultants</li>
+          <li>NBFC/BFSI Referral Partners</li>
+        </ul>
       </div>
     </div>
 
