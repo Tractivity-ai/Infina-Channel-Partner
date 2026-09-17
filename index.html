@@ -187,6 +187,50 @@
     max-width: 34ch;
   }
 
+  .hero-tiles {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .hero-tile {
+    flex: 1;
+    background: rgba(244,247,251,0.06);
+    border: 1px solid rgba(244,247,251,0.14);
+    border-radius: 12px;
+    padding: 16px 10px;
+    text-align: center;
+  }
+
+  .hero-tile-icon {
+    width: 34px;
+    height: 34px;
+    margin: 0 auto 10px;
+    border-radius: 10px;
+    background: rgba(238,27,36,0.14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-tile-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .hero-tile span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: rgba(244,247,251,0.9);
+  }
+
+  @media (max-width: 480px) {
+    .hero-tiles { flex-direction: column; }
+  }
+
   .eligibility {
     border-top: 1px solid rgba(244,247,251,0.15);
     padding-top: 22px;
@@ -962,6 +1006,27 @@
         <div class="eyebrow">Channel Partner / DSA Program</div>
         <h1>Infina Saathi</h1>
         <p class="lede" style="font-weight:600;color:#F4F7FB;">Become our Channel Partner/ DSA with Infina Finance</p>
+
+        <div class="hero-tiles">
+          <div class="hero-tile">
+            <div class="hero-tile-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 15v-3a8 8 0 0116 0v3" stroke="#EE1B24" stroke-width="1.8" stroke-linecap="round"/><rect x="2.5" y="14" width="4" height="6" rx="1.6" stroke="#EE1B24" stroke-width="1.8"/><rect x="17.5" y="14" width="4" height="6" rx="1.6" stroke="#EE1B24" stroke-width="1.8"/></svg>
+            </div>
+            <span>Dedicated RM</span>
+          </div>
+          <div class="hero-tile">
+            <div class="hero-tile-icon">
+              <svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="6" rx="7" ry="3" stroke="#EE1B24" stroke-width="1.8"/><path d="M5 6v5c0 1.66 3.13 3 7 3s7-1.34 7-3V6" stroke="#EE1B24" stroke-width="1.8" stroke-linecap="round"/><path d="M5 11v5c0 1.66 3.13 3 7 3s7-1.34 7-3v-5" stroke="#EE1B24" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <span>Competitive Payouts</span>
+          </div>
+          <div class="hero-tile">
+            <div class="hero-tile-icon">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13" r="8" stroke="#EE1B24" stroke-width="1.8"/><path d="M12 9v4l3 2" stroke="#EE1B24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 2h4M12 2v2.2" stroke="#EE1B24" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <span>Fast Turnaround</span>
+          </div>
+        </div>
       </div>
 
       <div class="eligibility">
