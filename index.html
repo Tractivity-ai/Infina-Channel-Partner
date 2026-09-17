@@ -517,8 +517,9 @@
 
   /* ============ BENEFITS ============ */
   .benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
   }
 
@@ -527,6 +528,8 @@
     border: 1px solid var(--line);
     border-radius: 16px;
     padding: 30px 24px;
+    flex: 1 1 calc(33.333% - 14px);
+    max-width: calc(33.333% - 14px);
   }
 
   .benefit-card.filled {
@@ -577,10 +580,10 @@
   .benefit-card.filled p { color: rgba(244,247,251,0.72); }
 
   @media (max-width: 900px) {
-    .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+    .benefit-card { flex-basis: calc(50% - 10px); max-width: calc(50% - 10px); }
   }
   @media (max-width: 560px) {
-    .benefits-grid { grid-template-columns: 1fr; }
+    .benefit-card { flex-basis: 100%; max-width: 100%; }
   }
 
   /* ============ WHO CAN PARTNER ============ */
@@ -590,8 +593,8 @@
 
   .who-grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 56px;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
     align-items: start;
   }
 
@@ -599,11 +602,32 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: 8px;
+    margin-top: 10px;
+  }
+
+  .who-grid > div,
+  .who-grid > ul {
+    background: var(--paper-card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 30px 32px;
+    box-shadow: 0 2px 14px -4px rgba(20,33,61,0.06);
   }
 
   .dsa-category {
-    margin-bottom: 20px;
+    padding: 16px 0;
+  }
+
+  .dsa-category:first-of-type {
+    padding-top: 0;
+  }
+
+  .dsa-category:last-of-type {
+    padding-bottom: 0;
+  }
+
+  .dsa-category + .dsa-category {
+    border-top: 1px solid var(--line);
   }
 
   .dsa-category h5 {
