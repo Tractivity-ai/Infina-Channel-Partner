@@ -152,13 +152,13 @@
   .info-panel::after {
     content: "साथी";
     position: absolute;
-    top: 68px;
-    right: -6px;
+    top: 165px;
+    right: 40px;
     font-family: 'Noto Sans Devanagari', 'Inter', Arial, sans-serif;
     font-weight: 700;
-    font-size: 110px;
+    font-size: 56px;
     line-height: 1;
-    color: rgba(244,247,251,0.09);
+    color: rgba(244,247,251,0.16);
     letter-spacing: 0;
     pointer-events: none;
     z-index: 0;
@@ -200,8 +200,8 @@
     border-radius: 50%;
     background: var(--coral);
     margin-left: 4px;
-    vertical-align: middle;
-    transform: translateY(-4px);
+    vertical-align: baseline;
+    transform: translateY(0);
   }
 
   .info-panel p.lede {
@@ -216,11 +216,12 @@
   /* ============ HERO PHOTO + FLOW BADGES ============ */
   .hero-photo-frame {
     position: relative;
+    z-index: 0;
     flex: 1;
     min-height: 220px;
     margin: 26px 4px 0 0;
     border-radius: 20px;
-    overflow: hidden;
+    overflow: visible;
     background: var(--navy-deep);
   }
 
@@ -230,14 +231,29 @@
     object-fit: cover;
     object-position: center 30%;
     display: block;
-    opacity: 0.88;
+    border-radius: 20px;
+    opacity: 1;
+    filter: saturate(1.2) brightness(1.05) contrast(1.03);
   }
 
   .hero-photo-frame::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(5,38,87,0.65) 0%, rgba(5,38,87,0.05) 32%, rgba(1,27,58,0.12) 100%);
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(5,38,87,0.45) 0%, rgba(5,38,87,0.02) 32%, rgba(1,27,58,0.08) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero-photo-frame::after {
+    content: "";
+    position: absolute;
+    inset: -26px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(45,197,196,0.30) 0%, rgba(45,197,196,0) 65%);
+    filter: blur(4px);
+    z-index: -1;
     pointer-events: none;
   }
 
