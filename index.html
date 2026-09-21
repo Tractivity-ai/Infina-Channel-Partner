@@ -219,8 +219,9 @@
     z-index: 0;
     flex: 1;
     min-height: 220px;
-    margin: 26px -40px -40px -44px;
-    overflow: hidden;
+    margin: 26px 4px 0 0;
+    border-radius: 20px;
+    overflow: visible;
     background: var(--navy-deep);
   }
 
@@ -230,6 +231,7 @@
     object-fit: cover;
     object-position: center 30%;
     display: block;
+    border-radius: 20px;
     opacity: 1;
     filter: saturate(1.2) brightness(1.05) contrast(1.03);
   }
@@ -238,9 +240,21 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(5,38,87,0.5) 0%, rgba(5,38,87,0.02) 26%, rgba(1,27,58,0.1) 100%);
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(5,38,87,0.45) 0%, rgba(5,38,87,0.02) 32%, rgba(1,27,58,0.08) 100%);
     pointer-events: none;
     z-index: 1;
+  }
+
+  .hero-photo-frame::after {
+    content: "";
+    position: absolute;
+    inset: -26px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(45,197,196,0.30) 0%, rgba(45,197,196,0) 65%);
+    filter: blur(4px);
+    z-index: -1;
+    pointer-events: none;
   }
 
   .flow-badge {
