@@ -152,14 +152,14 @@
   .info-panel::after {
     content: "साथी";
     position: absolute;
-    top: -34px;
-    right: -18px;
-    font-family: 'Inter', 'Noto Sans Devanagari', Arial, sans-serif;
-    font-weight: 800;
-    font-size: 150px;
+    top: 68px;
+    right: -6px;
+    font-family: 'Noto Sans Devanagari', 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 110px;
     line-height: 1;
-    color: rgba(244,247,251,0.07);
-    letter-spacing: -0.02em;
+    color: rgba(244,247,251,0.09);
+    letter-spacing: 0;
     pointer-events: none;
     z-index: 0;
     white-space: nowrap;
@@ -218,7 +218,8 @@
     position: relative;
     flex: 1;
     min-height: 220px;
-    margin: 26px -40px -40px -44px;
+    margin: 26px 4px 0 0;
+    border-radius: 20px;
     overflow: hidden;
     background: var(--navy-deep);
   }
@@ -229,6 +230,7 @@
     object-fit: cover;
     object-position: center 30%;
     display: block;
+    opacity: 0.88;
   }
 
   .hero-photo-frame::before {
