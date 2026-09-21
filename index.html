@@ -114,33 +114,33 @@
   /* ============ HERO (Infina Saathi, scoped under .hx) ============ */
   .hx { --hx-navy:#002f67; --hx-red:#ff3037; --hx-ink:#082d61; --hx-line:#dbe4ed; }
   .hx, .hx * { box-sizing:border-box; }
-  .hx { width:calc(100% - 48px); max-width:1448px; min-height:1004px; margin:20px auto 26px; display:grid; grid-template-columns:39.45% 60.55%; overflow:hidden; border:1px solid #02346e; border-radius:25px; background:#002e66; box-shadow:0 1px 8px rgba(0,30,75,.12); color:var(--hx-ink); font-family:"DM Sans",Arial,sans-serif; }
-  .hx .hx-info { position:relative; min-height:100%; overflow:hidden; padding:59px 59px 0; background:linear-gradient(135deg,#002c61 0%,#003777 55%,#002d61 100%); color:#fff; }
+  .hx { width:calc(100% - 48px); max-width:1448px; min-height:720px; margin:20px auto 26px; display:grid; grid-template-columns:39.45% 60.55%; overflow:hidden; border:1px solid #02346e; border-radius:25px; background:#002e66; box-shadow:0 1px 8px rgba(0,30,75,.12); color:var(--hx-ink); font-family:"DM Sans",Arial,sans-serif; }
+  .hx .hx-info { position:relative; min-height:100%; overflow:hidden; padding:42px 42px 0; background:linear-gradient(135deg,#002c61 0%,#003777 55%,#002d61 100%); color:#fff; }
   .hx .hx-info::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,42,95,.99) 0%,rgba(0,42,95,.97) 34%,rgba(0,42,95,.64) 45%,rgba(0,30,73,.16) 61%,rgba(0,18,51,.16) 100%); pointer-events:none; z-index:1; }
   .hx .hx-eyebrow { position:relative; z-index:3; color:var(--hx-red); font:700 15px/1.2 Inter,sans-serif; letter-spacing:1px; }
-  .hx h1 { position:relative; z-index:3; margin:27px 0 31px; font:800 clamp(57px,5.4vw,87px)/.95 Inter,sans-serif; letter-spacing:-4px; color:#fff; }
+  .hx h1 { position:relative; z-index:3; margin:18px 0 20px; font:800 clamp(40px,4vw,62px)/.95 Inter,sans-serif; letter-spacing:-2.5px; color:#fff; }
   .hx h1 span { color:var(--hx-red); }
-  .hx .hx-tagline { position:relative; z-index:3; width:430px; max-width:100%; margin:0; font:500 25px/1.33 Inter,sans-serif; letter-spacing:-1.1px; color:#fff; }
-  .hx .hx-photo { position:absolute; z-index:0; left:0; right:0; bottom:0; width:100%; height:650px; object-fit:cover; object-position:68% bottom; filter:saturate(.9) contrast(1.03); }
-  .hx .hx-badge { position:absolute; z-index:3; display:flex; align-items:center; gap:12px; min-height:55px; padding:7px 17px 7px 8px; background:#fff; color:#002e66; border-radius:30px; box-shadow:0 5px 15px rgba(0,0,0,.12); font:700 16px/1.08 Inter,sans-serif; }
-  .hx .hx-badge b { display:grid; place-items:center; flex:0 0 42px; width:42px; height:42px; border-radius:50%; background:#00336c; color:#fff; font-size:19px; }
-  .hx .hx-b1 { top:548px; left:9px; } .hx .hx-b2 { top:423px; right:43px; } .hx .hx-b3 { bottom:54px; left:30px; padding-right:22px; background:var(--hx-red); color:#fff; } .hx .hx-b3 b { background:#fff; color:var(--hx-red); }
-  .hx .hx-form-panel { margin:15px; padding:49px 45px; background:#fff; border-radius:21px; }
-  .hx .hx-form-eyebrow { margin-bottom:8px; color:var(--hx-red); font:700 16px/1.2 Inter,sans-serif; letter-spacing:.5px; }
-  .hx h2 { margin:0 0 32px; color:#002f68; font:700 clamp(25px,2.15vw,34px)/1.14 Inter,sans-serif; letter-spacing:-1.5px; }
-  .hx form { display:grid; grid-template-columns:1fr 1fr; gap:20px 22px; }
+  .hx .hx-tagline { position:relative; z-index:3; width:380px; max-width:100%; margin:0; font:500 18px/1.4 Inter,sans-serif; letter-spacing:-0.6px; color:#fff; }
+  .hx .hx-photo { position:absolute; z-index:0; left:0; right:0; bottom:0; width:100%; height:460px; object-fit:cover; object-position:68% bottom; filter:saturate(.9) contrast(1.03); }
+  .hx .hx-badge { position:absolute; z-index:3; display:flex; align-items:center; gap:12px; min-height:44px; padding:6px 14px 6px 7px; background:#fff; color:#002e66; border-radius:26px; box-shadow:0 5px 15px rgba(0,0,0,.12); font:700 14px/1.08 Inter,sans-serif; }
+  .hx .hx-badge b { display:grid; place-items:center; flex:0 0 34px; width:34px; height:34px; border-radius:50%; background:#00336c; color:#fff; font-size:16px; }
+  .hx .hx-b1 { top:388px; left:7px; } .hx .hx-b2 { top:300px; right:31px; } .hx .hx-b3 { bottom:39px; left:22px; padding-right:18px; background:var(--hx-red); color:#fff; } .hx .hx-b3 b { background:#fff; color:var(--hx-red); }
+  .hx .hx-form-panel { margin:12px; padding:34px 32px; background:#fff; border-radius:18px; }
+  .hx .hx-form-eyebrow { margin-bottom:6px; color:var(--hx-red); font:700 13px/1.2 Inter,sans-serif; letter-spacing:.5px; }
+  .hx h2 { margin:0 0 20px; color:#002f68; font:700 clamp(19px,1.8vw,26px)/1.2 Inter,sans-serif; letter-spacing:-1px; }
+  .hx form { display:grid; grid-template-columns:1fr 1fr; gap:14px 16px; }
   .hx .hx-field { display:flex; flex-direction:column; } .hx .hx-full { grid-column:1/-1; }
-  .hx label { margin-bottom:8px; color:#172f53; font:600 16px/1.2 "DM Sans",sans-serif; } .hx .hx-required { color:var(--hx-red); }
-  .hx input, .hx select { width:100%; height:54px; padding:0 16px; border:1.5px solid var(--hx-line); border-radius:11px; outline:0; background:#f7fafe; color:#102f59; font:400 17px "DM Sans",sans-serif; }
+  .hx label { margin-bottom:6px; color:#172f53; font:600 13px/1.2 "DM Sans",sans-serif; } .hx .hx-required { color:var(--hx-red); }
+  .hx input, .hx select { width:100%; height:44px; padding:0 14px; border:1.5px solid var(--hx-line); border-radius:9px; outline:0; background:#f7fafe; color:#102f59; font:400 14px "DM Sans",sans-serif; }
   .hx input::placeholder { color:#99aac3; } .hx input:focus, .hx select:focus { border-color:var(--hx-red); box-shadow:0 0 0 3px rgba(255,48,55,.09); }
   .hx select { appearance:none; cursor:pointer; color:#96a6bd; background:#f7fafe url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%230b2e60' stroke-width='2.3'%3E%3Cpath d='m5 8 7 7 7-7'/%3E%3C/svg%3E") calc(100% - 15px) center/21px no-repeat; }
   .hx select:valid { color:#102f59; }
-  .hx .hx-hint { margin-top:7px; color:#71819a; font-size:14px; }
+  .hx .hx-hint { margin-top:5px; color:#71819a; font-size:12px; }
   .hx .hx-submit-area { grid-column:1/-1; margin-top:7px; }
-  .hx button { display:inline-flex; align-items:center; justify-content:center; gap:35px; min-width:281px; min-height:68px; padding:0 10px 0 42px; border:0; border-radius:40px; color:#fff; background:var(--hx-red); box-shadow:0 9px 20px rgba(255,48,55,.18); cursor:pointer; font:700 17px/1.15 Inter,sans-serif; text-align:left; }
-  .hx .hx-arrow { display:grid; place-items:center; width:45px; height:45px; border-radius:50%; background:#fff; color:var(--hx-red); font-size:32px; font-weight:400; }
-  .hx .hx-next { max-width:690px; margin:20px 0 13px; color:#61748f; font-size:16px; line-height:1.62; } .hx .hx-next strong { color:#172f53; }
-  .hx .hx-consent { max-width:725px; color:#8494aa; font-size:14px; line-height:1.6; }
+  .hx button { display:inline-flex; align-items:center; justify-content:center; gap:24px; min-width:230px; min-height:54px; padding:0 8px 0 30px; border:0; border-radius:32px; color:#fff; background:var(--hx-red); box-shadow:0 9px 20px rgba(255,48,55,.18); cursor:pointer; font:700 14px/1.15 Inter,sans-serif; text-align:left; }
+  .hx .hx-arrow { display:grid; place-items:center; width:36px; height:36px; border-radius:50%; background:#fff; color:var(--hx-red); font-size:24px; font-weight:400; }
+  .hx .hx-next { max-width:620px; margin:16px 0 10px; color:#61748f; font-size:13px; line-height:1.6; } .hx .hx-next strong { color:#172f53; }
+  .hx .hx-consent { max-width:650px; color:#8494aa; font-size:12px; line-height:1.6; }
   @media (max-width:800px) { .hx { width:calc(100% - 24px); grid-template-columns:1fr; min-height:0; margin:12px auto; border-radius:18px; } .hx .hx-info { min-height:640px; padding:38px 30px 0; } .hx .hx-form-panel { margin:8px; padding:32px 24px; } .hx h1 { font-size:61px; } .hx .hx-tagline { font-size:20px; } .hx form { grid-template-columns:1fr; } .hx .hx-full, .hx .hx-submit-area { grid-column:1; } .hx .hx-photo { height:420px; } .hx .hx-b1 { top:auto; bottom:152px; } .hx .hx-b2 { top:auto; bottom:270px; right:20px; } .hx .hx-b3 { bottom:30px; } }
 
   /* shared arrow chip, still used by the footer CTA */
