@@ -139,7 +139,8 @@
   .hx .hx-hint { margin-top:5px; color:#71819a; font-size:12px; }
   .hx .hx-submit-area { grid-column:1/-1; margin-top:7px; }
   .hx .hx-submit-inline { justify-content:flex-end; }
-  .hx .hx-submit-inline button { width:100%; }
+  .hx .hx-submit-inline button { width:100%; min-width:0; min-height:44px; height:44px; padding:0 6px 0 18px; gap:10px; font-size:13px; white-space:nowrap; }
+  .hx .hx-submit-inline .hx-arrow { width:28px; height:28px; font-size:18px; }
   .hx button { display:inline-flex; align-items:center; justify-content:center; gap:24px; min-width:230px; min-height:54px; padding:0 8px 0 30px; border:0; border-radius:32px; color:#fff; background:var(--hx-red); box-shadow:0 9px 20px rgba(255,48,55,.18); cursor:pointer; font:700 14px/1.15 Inter,sans-serif; text-align:left; }
   .hx .hx-arrow { display:grid; place-items:center; width:36px; height:36px; border-radius:50%; background:#fff; color:var(--hx-red); font-size:24px; font-weight:400; }
   .hx .hx-next { max-width:620px; margin:16px 0 10px; color:#61748f; font-size:13px; line-height:1.6; } .hx .hx-next strong { color:#172f53; }
@@ -777,7 +778,7 @@
         <div class="hx-field hx-full"><label for="location">Location / City <span class="hx-required">*</span></label><input id="location" required placeholder="City, State" /></div>
         <div class="hx-field hx-full"><label for="entity">Entity type <span class="hx-required">*</span></label><select id="entity" required><option value="" selected disabled>Select</option><option>HUF</option><option>Partnership Firm</option><option>LLP</option><option>Private Ltd.</option><option>Public Ltd.</option><option>Individual</option></select></div>
         <div class="hx-field"><label for="product">Product <span class="hx-required">*</span></label><select id="product" required><option value="" selected disabled>Select</option><option>LAS</option><option>LAP</option></select></div>
-        <div class="hx-field hx-submit-inline"><button type="submit">Submit<br>application <span class="hx-arrow">&#8594;</span></button></div>
+        <div class="hx-field hx-submit-inline"><button type="submit">Submit application <span class="hx-arrow">&#8594;</span></button></div>
         <div class="hx-submit-area"><p class="hx-next"><strong>What happens next:</strong> our channel partner / DSA team reviews every application manually, and a Relationship Manager will reach out within 1 to 2 business days to guide you through the next steps.</p><div class="hx-consent">By submitting, you agree to be contacted by Infina regarding this application and consent to our Privacy Policy and Terms of Use.</div></div>
       </form>
     </section>
