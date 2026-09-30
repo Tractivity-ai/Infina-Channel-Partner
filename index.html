@@ -421,15 +421,7 @@
     font-weight: 700;
     font-size: 17px;
     color: var(--navy);
-    margin: 0 0 4px 0;
-  }
-
-  .partner-card-sub {
-    display: block;
-    font-family: 'Inter', sans-serif;
-    font-size: 12.5px;
-    color: var(--ink-soft);
-    margin-bottom: 16px;
+    margin: 0 0 16px 0;
   }
 
   .check-list {
@@ -552,16 +544,6 @@
     .conditions-box { padding: 32px 26px; }
   }
 
-  .docs-line {
-    text-align: center;
-    margin-top: 24px;
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    color: var(--ink-soft);
-  }
-
-  .docs-line strong { color: var(--ink); font-weight: 700; }
-
   /* ============ PROCESS ============ */
   .process-block {
     background: #001f4d;
@@ -575,8 +557,8 @@
 
   .process-steps {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 28px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
   }
 
   .process-step {
@@ -610,10 +592,13 @@
     margin: 0;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1000px) {
+    .process-steps { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 640px) {
     .process-steps { grid-template-columns: repeat(2, 1fr); }
   }
-  @media (max-width: 560px) {
+  @media (max-width: 420px) {
     .process-steps { grid-template-columns: 1fr; }
   }
 
@@ -776,9 +761,9 @@
         <div class="hx-field"><label for="pincode">Pin code <span class="hx-required">*</span></label><input id="pincode" required inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="6-digit pin code" /></div>
         <div class="hx-field hx-full"><label for="location">Location / City <span class="hx-required">*</span></label><input id="location" required placeholder="City, State" /></div>
         <div class="hx-field hx-full"><label for="entity">Entity type <span class="hx-required">*</span></label><select id="entity" required><option value="" selected disabled>Select</option><option>HUF</option><option>Partnership Firm</option><option>LLP</option><option>Private Ltd.</option><option>Public Ltd.</option><option>Individual</option></select></div>
-        <div class="hx-field"><label for="product">Product <span class="hx-required">*</span></label><select id="product" required><option value="" selected disabled>Select</option><option>LAS</option><option>LAP</option></select></div>
+        <div class="hx-field"><label for="product">Product <span class="hx-required">*</span></label><select id="product" required><option value="" selected disabled>Select</option><option>LAS</option><option>LAP</option><option>Both</option></select></div>
         <div class="hx-field hx-submit-inline"><button type="submit">Submit application <span class="hx-arrow">&#8594;</span></button></div>
-        <div class="hx-submit-area"><p class="hx-next"><strong>What happens next:</strong> our channel partner / DSA team reviews every application manually, and a Relationship Manager will reach out within 1 to 2 business days to guide you through the next steps.</p><div class="hx-consent">By submitting, you agree to be contacted by Infina regarding this application and consent to our Privacy Policy and Terms of Use.</div></div>
+        <div class="hx-submit-area"><p class="hx-next"><strong>Apply in two minutes.</strong> Hear from your Relationship Manager within 1 to 2 business days.</p><div class="hx-consent">By submitting, you agree to be contacted by Infina regarding this application and consent to our Privacy Policy and Terms.</div></div>
       </form>
     </section>
   </main>
@@ -877,7 +862,6 @@
           <svg viewBox="0 0 24 24" fill="none"><path d="M3.5 10.5l8.5-6 8.5 6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 9.5V20h13V9.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.5 20v-6h5v6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <h3>Lending &amp; Finance</h3>
-        <span class="partner-card-sub">2 partner types</span>
         <ul class="check-list">
           <li>Loan DSAs</li>
           <li>Financial Consultants</li>
@@ -889,7 +873,6 @@
           <svg viewBox="0 0 24 24" fill="none"><path d="M3.5 16l5.5-6 4 4 7-8" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h5v5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <h3>Wealth &amp; Investment</h3>
-        <span class="partner-card-sub">5 partner types</span>
         <ul class="check-list">
           <li>Mutual Fund Distributors</li>
           <li>Wealth Advisors</li>
@@ -904,7 +887,6 @@
           <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="#fff" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <h3>Capital Markets</h3>
-        <span class="partner-card-sub">2 partner types</span>
         <ul class="check-list">
           <li>Financial Planners</li>
           <li>Portfolio Advisory Firms</li>
@@ -934,8 +916,6 @@
         </div>
       </div>
     </div>
-
-    <div class="docs-line"><strong>Documents:</strong> PAN, Aadhaar, bank details, plus business registration proof if you apply as a firm.</div>
   </div>
 </section>
 
@@ -945,29 +925,33 @@
     <div class="section-head center">
       <div class="section-eyebrow">How it works</div>
       <h2>From application to <span class="accent">your first payout.</span></h2>
-      <p>Placeholder, a manual review at every step, so you always know where your application stands.</p>
     </div>
 
     <div class="process-steps">
       <div class="process-step">
         <span class="step-index">01</span>
-        <h3>Apply online</h3>
-        <p>Share your details through the form above. Takes under two minutes.</p>
+        <h3>Enrolment</h3>
+        <p>Fill the form above. It takes less than two minutes.</p>
       </div>
       <div class="process-step">
         <span class="step-index">02</span>
-        <h3>Verification</h3>
-        <p>Our team reviews your application and documents, and runs standard KYC checks.</p>
+        <h3>Basic checks</h3>
+        <p>We verify your documents and KYC details.</p>
       </div>
       <div class="process-step">
         <span class="step-index">03</span>
         <h3>Agreement</h3>
-        <p>Sign the partner agreement and get your unique Channel Partner / DSA code.</p>
+        <p>We sign the partner agreement with you.</p>
       </div>
       <div class="process-step">
         <span class="step-index">04</span>
-        <h3>Start referring</h3>
-        <p>Log in to your dashboard, submit leads, and track payouts as loans disburse.</p>
+        <h3>Referrals</h3>
+        <p>Connect us with clients in your network who need funding.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-index">05</span>
+        <h3>Payouts</h3>
+        <p>You earn on every case that is approved.</p>
       </div>
     </div>
   </div>
@@ -987,35 +971,35 @@
           Is there a fee to become a Channel Partner / DSA?
           <span class="icon"></span>
         </button>
-        <div class="faq-a"><p>Placeholder answer, confirm final fee structure, if any, with the client before publishing.</p></div>
+        <div class="faq-a"><p>Fee structure to be confirmed before publishing.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button">
           How and when are commissions paid out?
           <span class="icon"></span>
         </button>
-        <div class="faq-a"><p>Placeholder answer, describe payout cycle and method once finalised.</p></div>
+        <div class="faq-a"><p>Payout cycle and method to be confirmed.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button">
           What documents do I need to apply?
           <span class="icon"></span>
         </button>
-        <div class="faq-a"><p>Placeholder answer, list documents by entity type once finalised.</p></div>
+        <div class="faq-a"><p>Document requirements by entity type to be confirmed.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button">
           How long does verification take?
           <span class="icon"></span>
         </button>
-        <div class="faq-a"><p>Placeholder answer, confirm expected turnaround with the partnerships team.</p></div>
+        <div class="faq-a"><p>Expected turnaround to be confirmed with the partnerships team.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button">
           Can I partner if I already work with another lender?
           <span class="icon"></span>
         </button>
-        <div class="faq-a"><p>Placeholder answer, confirm exclusivity terms, if any.</p></div>
+        <div class="faq-a"><p>Exclusivity terms, if any, to be confirmed.</p></div>
       </div>
     </div>
   </div>
@@ -1024,7 +1008,7 @@
 <!-- ============ FOOTER CTA ============ -->
 <div class="footer-cta">
   <h2>Ready to <span class="accent">get started?</span></h2>
-  <p>Placeholder copy, the application takes under two minutes.</p>
+  <p>The application takes under two minutes.</p>
   <a href="#apply" class="btn">Apply to become a partner <span class="btn-arrow-circle">&#8594;</span></a>
 </div>
 
